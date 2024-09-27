@@ -13,9 +13,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 var posts = [];
 
 app.get("/", (req, res) => {
-    const postList = posts;
     res.render('index.ejs', {
-        posts: postList
+        posts: posts
     });
 });
 
@@ -50,16 +49,22 @@ app.get("/edit/:id", (req, res) => {
     res.render('edit.ejs', { post: post });
 })
 
-app.put("/savechanges/:id", (req, res) => {
+app.post("/savechanges/:id", (req, res) => {
     const postId = req.params.id;
     const post = posts.find(p => p.id === postId);
-
     const title = req.body["title"];
     const content = req.body["content"];
+
+    const updatedPost = { id: postId, title: title, content: content };
+    const updatedPostList = posts.map(p => p.id === updatedPost.id ? updatedPost : p);
     
-    res.render('post.ejs', {
-        post: newPost
-    })
+    posts = updatedPostList;
+
+    res.render('post.ejs', { post: updatedPost });
+});
+
+app.delete('/post/:id', (req, res) => {
+    res.render('index.ejs', { posts: posts })
 });
 
 app.listen(port, (req, res) => {
