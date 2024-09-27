@@ -1,0 +1,19 @@
+{
+  "name": "blog-web-application",
+  "version": "1.0.0",
+  "description": "An application to view and share blog posts",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kush Singhy",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "short-unique-id": "^5.2.0",
+    "uuid": "^10.0.0"
+  }
+}
