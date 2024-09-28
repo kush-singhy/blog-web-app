@@ -1,12 +1,14 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import { v4 as uuidv4 } from 'uuid';
+import methodOverride from 'method-override';
 uuidv4();
 
 const port = 3000;
 
 const app = express();
 
+app.use(methodOverride('_method'));
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -63,8 +65,11 @@ app.post("/savechanges/:id", (req, res) => {
     res.render('post.ejs', { post: updatedPost });
 });
 
-app.delete('/post/:id', (req, res) => {
-    res.render('index.ejs', { posts: posts })
+app.get('/delete/:id', (req, res) => {
+    const postId = req.params.id;
+    posts = posts.filter(post => post.id !== postId);
+
+    res.render('index.ejs', { posts: posts });
 });
 
 app.listen(port, (req, res) => {

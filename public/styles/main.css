@@ -1,0 +1,22 @@
+body {
+    background-color: white;
+}
+
+header {
+    background-color: #6A9C89;
+    color: white;
+    padding: 18px;
+}
+
+header a {
+    text-decoration: none;
+    color: white;
+}
+
+#container {
+    padding: 24px 18px;
+}
+
+.newpost-btn {
+    margin-bottom: 24px;
+}
