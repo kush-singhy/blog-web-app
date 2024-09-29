@@ -13,13 +13,17 @@
   <body>
     <div id="container">
         <a href="/newpost" class="btn btn-success newpost-btn">New Post</a>
-        
+
         <% if (posts && posts.length > 0) { %>
-            <ul>
-                <% posts.forEach((post) => { %>
-                    <li><a href="/post/<%= post.id %>"><%= post.title %></a></li>
-                <% }) %>
-            </ul>
+          <% posts.forEach((post) => { %>
+            <div class="card post-card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title"><%= post.title %></h5>
+                <p class="card-text text-overflow"><%= post.content %></p>
+                <a href="/post/<%= post.id %>" class="card-link">Continue reading</a>
+              </div>
+            </div>
+          <% }) %>
         <% } else { %>
             <p>No posts available</p>
         <% } %>

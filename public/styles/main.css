@@ -20,3 +20,19 @@ header a {
 .newpost-btn {
     margin-bottom: 24px;
 }
+
+.text-overflow {
+    height: 25px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.post-card {
+    width: 18rem;
+    margin-bottom: 15px;
+}
+
+.post-content {
+    height: 300px;
+}
